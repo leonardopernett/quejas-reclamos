@@ -50,7 +50,7 @@
                 <div class="row">
                     <div class="col-md-6">
                        <form action="{{ route('contact') }}" method="POST" enctype="multipart/form-data" id="form">
-                      
+                         @csrf
                            <div class="mb-2">
                                <label for=""> <small class="asterisco">*</small> Tipo de petición: </label>
                                <select name="tipo" class="form-control" value="{{ old('tipo') }}" required>

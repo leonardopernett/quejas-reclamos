@@ -54,8 +54,7 @@ class PeticionController extends Controller
             $object = DB::connection('mysql')->select('select last_insert_id() as id');
             
             if($request->file('file')){
-                $url =  $request->file('file')->getClientOriginalName();
-                $file = $url->store('public');
+                $file = $request->file('file')->store('public');
                 DB::update('UPDATE qr_casos SET archivo=? where id=? ',[$file,$object[0]->id]);
             }
 
