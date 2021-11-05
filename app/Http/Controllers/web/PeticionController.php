@@ -77,7 +77,7 @@ class PeticionController extends Controller
             INNER JOIN qr_clientes q
             ON q.id = c.id_cliente where c.id=?',[$object[0]->id]);
 
-             Mail::to('leonardo.pernett@grupokonecta.com')->send(new PeticionMailer($data[0]) );
+             Mail::to('engie.lorena@grupokonecta.com')->send(new PeticionMailer($data[0]) );
              Mail::to($request->email)->send(new ClienteMailer($data[0]) );
         
              
