@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Mail\PeticionMailer;
+use App\Mail\ClienteMailer;
 use Illuminate\Support\Facades\Mail;
 
 class PeticionController extends Controller
@@ -14,10 +15,12 @@ class PeticionController extends Controller
          $solicitud = DB::connection('mysql')->select('select * from qr_tipos_de_solicitud');
          $areas = DB::connection('mysql')->select('select * from qr_areas');
          $clientes  = DB::connection('mysql')->select('select * from qr_clientes');
+         $casos = DB::connection('mysql')->select('select * from qr_clientes where id=?',[4]);
           return view('web.peticion',[ 
             'solicitud' => $solicitud ,
             'clientes'  => $clientes,
-            'areas'     => $areas
+            'areas'     => $areas,
+            'casos'     => $casos
             ]);
      }
      public function store(Request $request){
@@ -58,6 +61,11 @@ class PeticionController extends Controller
                 DB::update('UPDATE qr_casos SET archivo=? where id=? ',[$file,$object[0]->id]);
             }
 
+            if($request->file('file2')){
+                $file2 = $request->file('file2')->store('public');
+                DB::connection('mysql')->update( 'UPDATE qr_casos SET archivo2=? where id=?',[ $file2, $object[0]->id ] );
+            }
+
             $data = DB::connection('mysql')->select('SELECT tipo_de_dato AS tipo, a.nombre AS area, tipologia, c.nombre AS nombre, documento, correo, clientes,numero_caso
             FROM qr_casos c
             INNER JOIN qr_tipos_de_solicitud s
@@ -65,11 +73,13 @@ class PeticionController extends Controller
             INNER JOIN qr_tipologias t 
             ON t.id = c.id_tipologia
             INNER JOIN qr_areas a
-            ON a.id= t.id_areas
+            ON a.id= t.id_areas 
             INNER JOIN qr_clientes q
             ON q.id = c.id_cliente where c.id=?',[$object[0]->id]);
 
-             Mail::to('engie.lorena@grupokonecta.com')->send(new PeticionMailer($data[0]));
+             Mail::to('leonardo.pernett@grupokonecta.com')->send(new PeticionMailer($data[0]) );
+             Mail::to($request->email)->send(new ClienteMailer($data[0]) );
+        
              
             return redirect()->route('quejas')->with('message','Su peticion ha sido enviada');
         }else {

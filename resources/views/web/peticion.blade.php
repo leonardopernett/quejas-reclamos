@@ -40,10 +40,11 @@
 @endsection
 
 @section('content')
+
   <div class="row contenido mb-5">
       <div class="col-md-12 mx-auto">
           <div class="card">
-              <div class="card-header">
+              <div class="card-header"> 
                 <h5 class="">Escríbenos</h5>
               </div>
              <div class="card-body">
@@ -65,7 +66,7 @@
                            </div>
 
                            <div class="mb-2">
-                            <label for=""> <small class="asterisco">*</small> Areas: </label>
+                            <label for=""> <small class="asterisco">*</small> Área: </label>
                               <select name="areas" id="area" class="form-control" required>
                                <option value="">Seleccionar</option>
                                @foreach ($areas as $area)
@@ -76,7 +77,7 @@
                            </div>
                           
                            <div class="mb-2 hide" id="select">
-                            <label for=""> <small class="asterisco">*</small> Tipologias: </label>
+                            <label for=""> <small class="asterisco">*</small> Tipificación: </label>
                             
                             <select name="tipologia" id="contenido" class="form-control">
                                <option value="">Seleccione</option>
@@ -138,9 +139,14 @@
                           </div>
 
                          <div class="mb-2">
-                            <label for="">Cargar Archivo:</label>
+                            <label for="">Cargar Archivo 1:</label>
                             <input type="file" class="form-control" name="file"></textarea>
                          </div>
+
+                         <div class="mb-2">
+                          <label for="">Cargar Archivo 2:</label>
+                          <input type="file" class="form-control" name="file2"></textarea>
+                       </div>
 
                          <small class="text-danger">
                             @if (Session::has('flash'))
@@ -150,9 +156,9 @@
                          <div class="g-recaptcha ml-3 mb-3" data-theme="light" data-sitekey="6LegZbIcAAAAAKBdSmx7yQU0FLRKFSEMAS-ZBdpS" required></div>
                          
     
-                          <small class="campos">los campos <span class="text-danger">( * )</span> son requeridos</small>
+                         <small class="campos">los campos <span class="text-danger">( * )</span> son requeridos</small>
                          <div class="d-grid">
-                             <button class="btn btn-primary">Enviar Informacion</button>
+                             <button class="btn btn-primary">Enviar</button>
                          </div>
 
                        </form>

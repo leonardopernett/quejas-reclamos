@@ -7,26 +7,29 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class PeticionMailer extends Mailable
+class ClienteMailer extends Mailable
 {
     use Queueable, SerializesModels;
-    public $sms;
+     public $sms;
     /**
      * Create a new message instance.
      *
      * @return void
      */
     public function __construct($sms)
-    {
-        $this->sms = $sms ;
+    { 
+        $this->sms = $sms;
     }
 
+    /**
+     * Build the message.
+     *
+     * @return $this
+     */
     public function build()
     {
-        
         return $this->from('pernettleonardo@gmail.com','Grupo Konecta')
-                     ->subject('Nueva solicitud del '.$this->sms->numero_caso)
-                     ->markdown('web.mail.message');
-                     
+                    ->subject('Nueva solicitud del'.$this->sms->numero_caso)
+                    ->markdown('web.mail.message2');
     }
 }
