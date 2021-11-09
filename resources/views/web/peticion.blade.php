@@ -54,7 +54,7 @@
                          @csrf
                            <div class="mb-2">
                                <label for=""> <small class="asterisco">*</small> Tipo de petición: </label>
-                               <select name="tipo" class="form-control" value="{{ old('tipo') }}" required>
+                               <select name="tipo" class="form-control" value="{{ old('tipo')  }}" required>
                                    <option value="">Seleccione</option>
                                    @foreach ($solicitud as $item)
                                      <option value="{{ $item->id }}" {{old('tipo') ==  $item->id ? 'selected':''}} >{{ $item->tipo_de_dato }}</option> 

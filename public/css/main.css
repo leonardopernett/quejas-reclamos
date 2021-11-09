@@ -6,6 +6,22 @@ body{
     background-attachment: fixed;
     font-family: 'Roboto', sans-serif !important;
 }
+
+
+body::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+body::-webkit-scrollbar-track {
+    background: #21355e ; 
+    border-radius: 10px;
+}
+body::-webkit-scrollbar-thumb {
+    border-radius: 15px;
+    height: 5px;
+    background:  #21355e;
+}
+
 label {
     font-weight: bold;
     color:#000;
