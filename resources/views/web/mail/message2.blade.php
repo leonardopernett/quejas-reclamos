@@ -21,8 +21,8 @@
     <div class="container">
         <div class="card">
             <img src="https://www.grupokonecta.com/wp-content/uploads/2016/11/logo-konecta-azul-1.svg" alt="">
-            <p><strong>Tu solicitud fue registrada exitosamente, pronto nos estaremos comunicando contigo</strong></p>
-            <p><strong>Numero casos:</strong> {{ $sms->numero_caso }}</p>
+            <p><strong>Tu solicitud fue registrada exitosamente, pronto te estaremos dando respuesta.
+                Tu número de caso es: {{ $sms->numero_caso }}<</strong></p>
             <small>Por favor, NO responda a este mensaje, es un envío automático.</small>
         </div>
     </div>

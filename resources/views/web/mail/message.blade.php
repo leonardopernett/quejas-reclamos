@@ -22,7 +22,7 @@
         <div class="card">
             <img src="https://www.grupokonecta.com/wp-content/uploads/2016/11/logo-konecta-azul-1.svg" alt="">
             <p><strong>Se creo una nueva solicitud de quejas y reclamos</strong></p>
-            <p><strong>Numero casos:</strong> {{ $sms->numero_caso }}</p>
+            <p><strong>Numero de caso:</strong> {{ $sms->numero_caso }}</p>
             <p><strong>Tipo:</strong> {{ $sms->tipo }}</p>
             <p><strong>Area:</strong> {{ $sms->area }}</p>
             <small>Por favor, NO responda a este mensaje, es un envío automático.</small>
