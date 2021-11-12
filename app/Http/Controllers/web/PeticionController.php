@@ -48,10 +48,10 @@ class PeticionController extends Controller
           $correo        =  $request->email;
           $id_cliente    =  $request->client;
           $numero_caso   =  'C-' .( $res[0]->total + 1);
-          $id_casos      =  1;
+          $id_estado_caso     =  1;
           
-           DB::connection('mysql')->insert('insert into qr_casos (id_solicitud, id_tipologia, comentario, documento, nombre, correo, id_cliente, numero_caso, id_casos) values (?,?,?,?,?,?,?,?,?)',[
-             $id_solicitud,$id_tipologia, $comentario, $documento, $nombre, $correo, $id_cliente , $numero_caso, $id_casos  
+           DB::connection('mysql')->insert('insert into qr_casos (id_solicitud, id_tipologia, comentario, documento, nombre, correo, id_cliente, numero_caso, id_estado_caso) values (?,?,?,?,?,?,?,?,?)',[
+             $id_solicitud,$id_tipologia, $comentario, $documento, $nombre, $correo, $id_cliente , $numero_caso,  $id_estado_caso  
            ]);
 
             $object = DB::connection('mysql')->select('select last_insert_id() as id');
