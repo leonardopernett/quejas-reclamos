@@ -196,7 +196,7 @@
         $('#area').change(function(){
             document.getElementById('select').classList.remove('hide')
             $.ajax({
-            url:'/tipologia/all',
+            url:'tipologia/all',
             method:'POST',
             data:$('#form').serialize()
             }).done(function(res){
